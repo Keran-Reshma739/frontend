@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="signupPage" class="form-container">
+  <h2>Registration Form</h2>
+  <form id="signupForm" novalidate onsubmit="return handleSignup(event)">
+    <label for="name" class="required-asterisk">Your Name</label>
+    <input type="text" id="name" placeholder="Enter your full name" 
+           oninput="validateName(); clearHighlightsAndErrors('name')" onkeypress="return onlyLetters(event)">
+    <div id="name-error" class="error-message">Name should contain only letters and spaces</div>
+
+    <label for="email" class="required-asterisk">Your Email</label>
+    <input type="email" id="email" placeholder="Enter your email address" 
+           oninput="validateEmail(); clearHighlightsAndErrors('email')">
+    <div id="email-error" class="error-message">Please enter a valid email address</div>
+
+    <label for="number" class="required-asterisk">Your Number</label>
+    <div class="phone-input-container">
+      <input type="text" id="countryCode" placeholder="+91" readonly>
+      <input type="text" id="number" placeholder="Enter your phone number" 
+             maxlength="10" oninput="validateNumber(); clearHighlightsAndErrors('number')" 
+             onkeypress="return onlyNumbers(event)">
+    </div>
+    <div id="number-error" class="error-message">Phone number must be 10 digits only</div>
+    <div id="country-selector">
+      <p class="loading">Loading country codes...</p>
+    </div>
+
+    <label for="dob" class="required-asterisk">DOB</label>
+    <input type="date" id="dob" onchange="validateDob(); clearHighlightsAndErrors('dob')">
+    <div id="dob-error" class="error-message">Date of Birth is required</div>
+
+    <label for="password" class="required-asterisk">Password</label>
+    <input type="password" id="password" placeholder="Enter Your password (max 16 chars)" 
+           maxlength="16" oninput="validatePassword(); clearHighlightsAndErrors('password'); validateConfirmPassword()">
+    <div id="password-error" class="error-message">Password must be 8-16 characters with at least 1 number and 1 symbol</div>
+
+    <label for="confirmPassword" class="required-asterisk">Confirm Password</label>
+    <input type="password" id="confirmPassword" placeholder="Re-enter your password" 
+           maxlength="16" oninput="validateConfirmPassword(); clearHighlightsAndErrors('confirmPassword')">
+    <div id="confirmPassword-error" class="error-message">Passwords do not match</div>
+
+    <span id="form-error-message" style="text-align: center; display: none;"></span>
+
+    <input type="submit" value="Sign Up">
+    
+    <div class="nav-link">
+      Already registered? <a href="#" onclick="showPage('loginPage'); return false;">Login here</a>
+    </div>
+  </form>
+</div>
+
+<div id="loginPage" class="form-container hidden">
+  <h2>Login</h2>
+  <form id="loginForm" novalidate onsubmit="return handleLogin(event)">
+    <label for="loginField" class="required-asterisk">Email or Phone Number</label>
+    <input type="text" id="loginField" placeholder="Enter your email or phone number"
+           oninput="clearHighlightsAndErrors('loginField')">
+    <div id="loginField-error" class="error-message">Please enter a valid email or phone number</div>
+
+    <label for="loginPassword" class="required-asterisk">Password</label>
+    <input type="password" id="loginPassword" placeholder="Enter your password"
+           oninput="clearHighlightsAndErrors('loginPassword')">
+    <div id="loginPassword-error" class="error-message">Password is required</div>
+
+    <span id="form-error-message-login" style="display: none;"></span>
+
+    <input type="submit" value="Login">
+    
+    <div class="nav-link">
+      Not yet registered? <a href="#" onclick="showPage('signupPage'); return false;">Sign up here</a>
+    </div>
+  </form>
+</div>
+
+<div id="dashboardPage" class="form-container hidden">
+  <h2>Dashboard</h2>
+  <p><strong>Name:</strong> <span id="displayName"></span></p>
+  <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+  <p><strong>Phone Number:</strong> <span id="displayNumber"></span></p>
+  <p><strong>DOB:</strong> <span id="displayDob"></span></p>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
