@@ -1,0 +1,213 @@
+:root {
+  --primary-bg-color: pink;
+  --secondary-bg-color: white;
+  --accent-color: salmon;
+  --text-color: #333;
+  --error-color: red;
+  --border-color: black;
+  --light-border-color: #ccc;
+  --placeholder-color: #666;
+  --main-font: Arial, sans-serif;
+  --heading-size: 1.5rem;
+  --body-text-size: 14px;
+  --error-text-size: 12px;
+  --container-padding: 30px;
+  --input-padding: 10px;
+  --button-padding: 12px 20px;
+  --element-margin: 15px;
+  --small-margin: 5px;
+  --border-radius: 10px;
+  --small-border-radius: 5px;
+  --border-width: 1px;
+  --highlight-border: 2px solid var(--error-color);
+  --box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  --max-form-width: 500px;
+  --phone-code-width: 80px;
+}
+
+body {
+  background-color: var(--primary-bg-color);
+  font-family: var(--main-font);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.form-container {
+  background-color: var(--secondary-bg-color);
+  padding: var(--container-padding);
+  border-radius: var(--border-radius);
+  max-width: var(--max-form-width);
+  width: 100%;
+  box-shadow: var(--box-shadow);
+  position: relative;
+}
+
+h2 {
+  text-align: center;
+  color: var(--text-color);
+  font-size: var(--heading-size);
+}
+
+label {
+  display: block;
+  margin-top: var(--element-margin);
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.required-asterisk::after {
+  content: " *";
+  color: var(--error-color);
+}
+
+input {
+  width: 100%;
+  padding: var(--input-padding);
+  margin-top: var(--small-margin);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--small-border-radius);
+  font-size: var(--body-text-size);
+  box-sizing: border-box;
+}
+
+input[type="submit"], button {
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
+  border: none;
+  padding: var(--button-padding);
+  font-size: var(--body-text-size);
+  border-radius: var(--small-border-radius);
+  margin-top: var(--element-margin);
+  width: 100%;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover, button:hover {
+  background-color: var(--accent-color);
+}
+
+.highlight {
+  border: var(--highlight-border);
+}
+
+.hidden {
+  display: none;
+}
+
+#form-error-message,
+#form-error-message-login {
+  color: var(--error-color);
+  margin: var(--element-margin) 0;
+  text-align: center;
+  font-size: var(--body-text-size);
+  width: 100%;
+  display: block;
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: var(--error-text-size);
+  margin-top: var(--small-margin);
+  display: none;
+}
+
+.nav-link {
+  text-align: center;
+  margin-top: var(--element-margin);
+}
+
+.nav-link a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-link a:hover {
+  text-decoration: underline;
+}
+
+.phone-input-container {
+  display: flex;
+  align-items: center;
+}
+
+#countryCode {
+  width: var(--phone-code-width);
+  padding: var(--input-padding);
+  border: var(--border-width) solid var(--light-border-color);
+  border-radius: var(--small-border-radius) 0 0 var(--small-border-radius);
+  background-color: #f0f0f0;
+}
+
+#number {
+  border-radius: 0 var(--small-border-radius) var(--small-border-radius) 0;
+  flex-grow: 1;
+}
+
+.loading {
+  color: var(--placeholder-color);
+  font-style: italic;
+  text-align: center;
+}
+
+#countryDropdown {
+  width: 100%;
+  padding: 8px;
+  margin-top: var(--small-margin);
+  border: var(--border-width) solid var(--light-border-color);
+  border-radius: var(--small-border-radius);
+}
+
+.password-container {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 25%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--placeholder-color);
+  background: none;
+  border: none;
+  padding: 0;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Custom popup styles */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  z-index: 1000;
+  text-align: center;
+  max-width: 80%;
+}
+
+.popup-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+
+.popup button {
+  margin-top: 15px;
+}
